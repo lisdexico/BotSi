@@ -4,15 +4,17 @@
 ###############################################################
 #
 
-
+import os
 from telegram.ext import Updater
 from telegram.ext import CommandHandler
 import logging
+
+
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                      level=logging.INFO)
 
-
-updater = Updater(token='720628059:AAFGhR0c63xW2DbneoZAVPj2O4lFNDddjRc', use_context=True)
+API_TOKEN = os.environ.get('HELLO_WORLD_TOKEN')
+updater = Updater(token=API_TOKEN, use_context=True)
 dispatcher = updater.dispatcher
 
 def start(update, context):
