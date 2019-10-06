@@ -1,6 +1,5 @@
 
 import os
-import telebot
 
 class SuggestionBoxFull(Exception):
 		pass

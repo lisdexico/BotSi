@@ -19,7 +19,7 @@ class User:
 	def last_consumption_time(self):
 		return max(list(self.history.keys()))
 
-	def remove_last_consumption(self):
+	def delete_last_consumption(self):
 		if self.history:
 			del self.history[self.last_consumption_time]
 
@@ -33,21 +33,23 @@ class User:
 				totals[consumption.substance] = consumption.quantity
 		return totals
 
-	def print_history(self):
-		print('Historial:')
+	def history_to_str(self):
+		string = 'Historial:\n\n'
 		for key in self.history:
-			print('    - ' + str(self.history[key]) + ' a las ' + key.strftime('%H:%M') )
+			string += '    - {0} a las {1}\n'.format(self.history[key], str(key.strftime('%H:%M')))
+		return string
 
-	def print_total(self):
-		print('Totales:')
+	def total_to_str(self):
+		string = 'Total:\n'
 		for key in self.totals:
-			print('    - ' + str(key) + ': ' + str(self.totals[key]) )
+			string += '    - {0}: {1}\n'.format(key, self.totals[key])
+		return string
 
-	def print_all(self):
-		print('\n' + '-----------------------------------')
-		print(str(self) + '\n')
-		self.print_history()
-		print()
-		self.print_total()
+	def all_to_str(self):
+		string = '\n' + '-----------------------------------\n'
+		string += str(self) + '\n\n'
+		string += '{0}\n{1}'.format(self.history_to_str(), self.total_to_str())
+		return string
+		
 
 

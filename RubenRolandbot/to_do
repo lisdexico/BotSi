@@ -2,9 +2,13 @@
 
 
 Necesary improvements:
+	- Botoncitos!
 	- Timezones
-	- precisión fracciones
-	- git YA!
+	- Precisión fracciones, quantity no fracción
+	- Alias
+	- Persistencia
+	- /help
+	- Message management
 
 Nice to have improvements:
 	- Vamo a calmarno
@@ -12,3 +16,4 @@ Nice to have improvements:
 	- Tiempo en pegar
 	- Premio aspiradora
 	- Splitwising
+	- Multilanguage

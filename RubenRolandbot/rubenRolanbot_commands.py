@@ -2,7 +2,6 @@
 import os
 import suggestion_box
 from controller import Controller
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, CallbackQueryHandler, MessageHandler, Filters
 import messages as txt
 import logging
@@ -75,17 +74,11 @@ def consume(update, context):
 ################################################
 # History
 def history(update, context):
-    keyboard = []
-    for user in controller.users:
-        keyboard.append([InlineKeyboardButton(user, callback_data=user)])
-
-    reply_markup = InlineKeyboardMarkup(keyboard)
-
-    update.message.reply_text('Please choose:', reply_markup=reply_markup)
-
-def history_callback(update, context):
-    query = update.callback_query
-    query.edit_message_text(text=controller.history_to_str(query.data))
+    args = update.message.text.split()
+    try:
+        update.message.reply_text(controller.history_to_str(args[1]))
+    except Exception: # If history couldn't be retrieved (e.g. no username)
+        update.message.reply_text(txt.history_error)
 
 ################################################
 # Undo
@@ -117,7 +110,6 @@ def main():
     dispatcher.add_handler(CommandHandler('suggest', suggest))
     dispatcher.add_handler(CommandHandler('consume', consume))
     dispatcher.add_handler(CommandHandler('history', history))
-    dispatcher.add_handler(CallbackQueryHandler(history_callback))
     dispatcher.add_handler(CommandHandler('undo', undo))
     dispatcher.add_handler(MessageHandler(Filters.text, default))
 

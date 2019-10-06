@@ -8,11 +8,14 @@ class Controller:
 	def __init__(self):
 		self.users =  dict()
 
+	def has(self, name):
+		return name in self.users
+
 	def add_user(self, name):
 		if name not in self.users:
 			self.users[name] = User(name)
 
-	def remove_user(self, name):
+	def delete_user(self, name):
 		if name in self.users:
 			del self.users[name]
 
@@ -21,16 +24,19 @@ class Controller:
 			self.add_user(name)
 		self.users[name].add_consumption(substance, quantity)
 
-	def remove_last_consumption(self, name):
+	def delete_last_consumption(self, name):
 		if name in self.users:
-			self.users[name].remove_last_consumption()
+			self.users[name].delete_last_consumption()
 
-	def print_users(self):
-		print('Users:')
+	def users_to_str(self):
+		string = 'Users:\n'
 		for user in self.users:
-			print('    - ' + str(user))
+			string += '    - {}\n'.format(user)
+		return string
 
-	def print_history(self, name):
+	def history_to_str(self, name):
 		if name in self.users:
-			self.users[name].print_all()
+			return self.users[name].all_to_str()
+		else:
+			return 'User not found'
 
