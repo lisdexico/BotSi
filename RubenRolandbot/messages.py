@@ -24,6 +24,14 @@ suggestion_box_full = 'Oops, looks like our suggestions box is full!\n Feel free
 
 suggestion_recieved = 'Thank you so much for your suggestion, we\'ll take a look at it as soon as possible'
 
+add_user_error = 'Sorry, an error occurred, we could not register the user.'
+
+add_user_text = 'User registered.'
+
+delete_user_error = 'Sorry, an error occurred, we could not delete the user.'
+
+delete_user_text = 'User deleted.'
+
 consume_description = '''Registers a consumption. Takes user, substance and quantity as arguments, separated only by space.
  For example, '/consume Signe pasta 0.5' would register that Signe consumed half a plate of pasta.
  This command must not be used in the house of Mr. Parra'''
