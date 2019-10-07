@@ -51,5 +51,3 @@ class User:
 		string += '{0}\n{1}'.format(self.history_to_str(), self.total_to_str())
 		return string
 		
-
-
